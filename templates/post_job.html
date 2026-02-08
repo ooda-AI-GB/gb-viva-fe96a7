@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Post New Job - JobBoard{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto;">
+    <h1 class="mb-4">Post a New Job</h1>
+    
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                <div class="flex gap-2" style="gap: 1.5rem;">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="title">Job Title</label>
+                        <input type="text" id="title" name="title" required placeholder="e.g. Senior Python Developer">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" required placeholder="e.g. TechCorp Inc.">
+                    </div>
+                </div>
+
+                <div class="flex gap-2" style="gap: 1.5rem;">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" required placeholder="e.g. New York, NY or Remote">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="job_type">Job Type</label>
+                        <select id="job_type" name="job_type" required>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Remote">Remote</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="salary_range">Salary Range</label>
+                    <input type="text" id="salary_range" name="salary_range" required placeholder="e.g. $100k - $130k">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Job Description</label>
+                    <textarea id="description" name="description" rows="6" required placeholder="Describe the role responsibilities..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="requirements">Requirements</label>
+                    <textarea id="requirements" name="requirements" rows="6" required placeholder="List skills and experience needed..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="how_to_apply">How to Apply</label>
+                    <textarea id="how_to_apply" name="how_to_apply" rows="3" required placeholder="Instructions for the applicant..."></textarea>
+                </div>
+
+                <div class="flex justify-between items-center mt-4">
+                    <a href="/" class="btn-outline" style="text-decoration: none; padding: 0.75rem 1.5rem; display: inline-block;">Cancel</a>
+                    <button type="submit" class="btn">Post Job</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

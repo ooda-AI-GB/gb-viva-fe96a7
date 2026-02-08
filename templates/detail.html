@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ job.title }} at {{ job.company }} - JobBoard{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="/" style="color: var(--light-text); text-decoration: none;">&larr; Back to Jobs</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="flex justify-between items-start mb-4" style="flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div>
+                <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">{{ job.title }}</h1>
+                <div style="font-size: 1.1rem; color: var(--secondary); margin-bottom: 1rem;">
+                    <strong>{{ job.company }}</strong> &bull; {{ job.location }}
+                </div>
+                <div class="flex gap-2">
+                    <span class="badge badge-{{ job.job_type.lower().replace(' ', '-') }}">{{ job.job_type }}</span>
+                    <span class="badge" style="background-color: #f3f4f6;">{{ job.salary_range }}</span>
+                </div>
+            </div>
+            <div style="text-align: right; min-width: 200px;">
+                <a href="mailto:?subject=Application for {{ job.title }}&body={{ job.how_to_apply }}" class="btn" style="width: 100%;">Apply Now</a>
+                <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--light-text); text-align: center;">
+                    Posted on {{ job.posted_date.strftime('%B %d, %Y') }}
+                </div>
+            </div>
+        </div>
+
+        <div style="display: grid; gap: 2rem;">
+            <section>
+                <h3 style="color: var(--primary); margin-bottom: 1rem; border-left: 4px solid var(--accent); padding-left: 1rem;">Job Description</h3>
+                <div style="white-space: pre-wrap;">{{ job.description }}</div>
+            </section>
+
+            <section>
+                <h3 style="color: var(--primary); margin-bottom: 1rem; border-left: 4px solid var(--accent); padding-left: 1rem;">Requirements</h3>
+                <div style="white-space: pre-wrap;">{{ job.requirements }}</div>
+            </section>
+
+            <section>
+                <h3 style="color: var(--primary); margin-bottom: 1rem; border-left: 4px solid var(--accent); padding-left: 1rem;">How to Apply</h3>
+                <div style="background-color: #f0fdf4; padding: 1rem; border-radius: 6px; border: 1px solid #bbf7d0;">
+                    {{ job.how_to_apply }}
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
